@@ -1,0 +1,180 @@
+---
+import { Image } from "astro:assets";
+import GitHubCorner from "../components/GitHubCorner.astro";
+import Icon from "../components/Icon.astro";
+import { constants } from "../helpers/constants";
+
+const { framework = "" } = Astro.props;
+---
+
+<header class="page-grid bg-graphPaper bg-repeat relative">
+  <!-- github corner -->
+  <a
+    href={constants.GITHUB_PROJECT}
+    target="_blank"
+    rel="noreferrer"
+    class="absolute top-0 right-0 text-icterine hover:text-white"
+    ><GitHubCorner width="108" /></a
+  >
+
+  <!-- left side -->
+  <div class="col-span-7 text-center py-12 flex flex-col items-center">
+    <Image
+      class="mb-7"
+      src="/images/logo__hacker-news.svg"
+      alt="A Hacker News Clone"
+      width="357"
+      height="48"
+    />
+
+    <Image
+      src="/images/logo.svg"
+      alt="Brazilian Nut News: Where the Best News Rises to the Top"
+      height="313"
+      width="669"
+    />
+  </div>
+
+  <!-- right side -->
+  <div
+    class="bg-cinder col-span-5 px-24 py-12 flex flex-col justify-end mt-auto h-full"
+  >
+    <!-- NO FRAMEWORK LISTED - USED FOR SIDE-BY-SIDE CONTENT -->
+    {
+      !framework && (
+        <>
+          <div class="text-3xl text-white font-bold mb-10">
+            Comparing all the frameworks, right next to each other:
+          </div>
+          <a
+            href={constants.GITHUB_PROJECT}
+            class="button outline text-white border-white"
+          >
+            <Icon id="github" width="32" height="32" />
+            View Code on GitHub
+          </a>
+        </>
+      )
+    }
+
+    <!-- NEXTJS - PAGES -->
+    {
+      framework === "nextjs-pages" && (
+        <>
+          <div class="flex items-end mb-16 text-white gap-x-3 leading-none text-xl">
+            <Image
+              src="/images/logo__nextjs--white.svg"
+              alt="Next.js"
+              width="200"
+              height="50"
+            />
+            Pages Router
+          </div>
+          <a
+            href={constants.GITHUB_NEXT_PAGES}
+            class="button outline text-white border-white mb-5"
+            target="_blank"
+          >
+            <Icon id="github" width="32" height="32" />
+            Next.js Pages API on GitHub
+          </a>
+          <a
+            href={constants.DEPLOYED_PAGES_APP}
+            class="button outline text-white border-white"
+            target="_blank"
+          >
+            Next.js Pages Deployed on
+            <Image
+              class="fill-white"
+              src="/images/logo__vercel--white.svg"
+              alt="Vercel"
+              width="143"
+              height="32"
+            />
+          </a>
+        </>
+      )
+    }
+
+    <!-- NEXTJS - APP -->
+    {
+      framework === "nextjs-app" && (
+        <>
+          <div class="flex items-end mb-16 text-white gap-x-3 leading-none text-xl">
+            <Image
+              src="/images/logo__nextjs--white.svg"
+              alt="Next.js"
+              width="200"
+              height="50"
+            />
+            App Router
+          </div>
+          <a
+            href={constants.GITHUB_NEXT_APP}
+            class="button outline text-white border-white mb-5"
+            target="_blank"
+          >
+            <Icon id="github" width="32" height="32" />
+            Next.js App API on GitHub
+          </a>
+          <a
+            href={constants.DEPLOYED_NEXT_APP}
+            class="button outline text-white border-white"
+            target="_blank"
+          >
+            Next.js App Deployed on
+            <Image
+              class="fill-white"
+              src="/images/logo__vercel--white.svg"
+              alt="Vercel"
+              width="143"
+              height="32"
+            />
+          </a>
+        </>
+      )
+    }
+
+    <!-- REDWOODJS -->
+    {
+      framework === "nextjs-app" && (
+        <>
+          <div class="flex items-end mb-16 text-white gap-x-3 leading-none text-xl">
+            <Image
+              src="/images/logo__redwoodjs.svg"
+              alt="Next.js"
+              width="306"
+              height="57"
+            />
+          </div>
+          <a
+            href={constants.GITHUB_REDWOOD}
+            class="button outline text-white border-white mb-5"
+            target="_blank"
+          >
+            <Icon id="github" width="32" height="32" />
+            Redwoodp API on GitHub
+          </a>
+          <a
+            href={constants.DEPLOYED_REDWOOD}
+            class="button outline text-white border-white"
+            target="_blank"
+          >
+            Redwood Deployed on
+            <Image
+              class="fill-white"
+              src="/images/logo__vercel--white.svg"
+              alt="Vercel"
+              width="143"
+              height="32"
+            />
+          </a>
+        </>
+      )
+    }
+
+    <!-- REMIX -->
+
+    <!-- SVELTEKIT -->
+  </div>
+</header>

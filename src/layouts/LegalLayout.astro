@@ -1,0 +1,42 @@
+---
+import Image from "astro/components/Image.astro";
+import GitHubCorner from "../components/GitHubCorner.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import headerStars2x from "../images/bg__header-login-stars@2x.png";
+import headerStar2x from "../images/bg__login-star@2x.png";
+import { constants } from "../helpers/constants";
+
+// get the text from the markdown file
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <header class="bg-graphPaper pt-10 relative">
+    <a
+      href={constants.GITHUB_PROJECT}
+      target="_blank"
+      rel="noreferrer"
+      class="absolute top-0 right-0 text-black hover:text-mamba"
+      ><GitHubCorner width="108" /></a
+    >
+    <h1
+      class="uppercase font-condensed text-mardiGras text-[294px] text-center leading-[0.8]"
+    >
+      {frontmatter.solidTitle}
+      <div class="inline outline-text">{frontmatter.outlineTitle}</div>
+    </h1>
+    <Image
+      class="absolute right-6 -bottom-[155px]"
+      src={headerStars2x}
+      width="192"
+      height="202"
+      alt=""
+    />
+  </header>
+  <main class="bg-icterine page-grid">
+    <div class="col-start-4 col-span-6 sectionPadding">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

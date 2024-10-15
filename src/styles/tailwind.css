@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply m-0 p-0 scroll-smooth font-sans;
+  }
+
+  .field {
+    @apply mb-8;
+    label { @apply text-4xl font-bold tracking-tight block mb-3;}
+    input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+      @apply w-full border-4 border-black h-24 px-6 text-4xl font-bold bg-transparent;
+    }
+  }
+
+  button {
+    @apply w-full text-4xl font-bold center leading-none py-6;
+    &.primary { @apply bg-mamba text-icterine hover:text-black hover:bg-white; }
+  }
+
+  svg {
+    @apply fill-current;
+  }
+}
+
+@layer components {
+  nav {
+    h4 { @apply font-wide text-xl uppercase text-mamba tracking-widest mb-8; }
+    li { @apply font-condensed uppercase text-4xl leading-snug; }
+    li a { @apply text-white hover:text-icterine; }
+  }
+
+  ul.framework-nav li {
+    @apply mb-8;
+  }
+
+  ul.more-tech-nav li {
+    @apply mb-8
+  }
+
+  footer {
+    ul.social-media { @apply flex justify-center gap-x-10 mb-14; }
+    ul.social-media a { @apply text-icterine hover:text-fountainBlue; }
+    ul.legal { @apply flex justify-center gap-2 mb-5; }
+    ul.legal li { @apply text-white after:content-['.'] last:after:content-[''] flex justify-center gap-2 hover:text-fountainBlue; }
+    ul.legal li a { @apply font-bold underline; }
+    p { @apply text-white font-bold text-center; }
+  }
+
+  /* home page */
+  .about-me ul.social-media  { @apply flex gap-x-10;
+    li { @apply text-stormDust hover:text-fountainBlue;}
+  }
+
+  .content {
+    > h2 { @apply font-bold col-span-9 mb-0 text-4xl; }
+    > p { @apply text-xl leading-1.8 col-span-9 mb-12; }
+    > pre { @apply col-span-9 py-3 px-4 rounded-md mb-12; }
+  }
+
+  .subscribe-to-my-newsletter {
+    background: linear-gradient(white 0, white 70px, #f0f0f0 71px, #f0f0f0 595px, white 596px);
+    @apply relative;
+    .kw-field-error-message { @apply absolute pt-2; }
+  }
+
+}
+
+@layer utilities {
+  .outline-text {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #331e36;
+  }
+
+  a.outline,
+  button.outline {
+    @apply border-[3px] border-black center gap-2 font-bold text-xl py-4 hover:bg-black hover:text-white whitespace-nowrap
+  }
+
+  .large-body {
+    @apply text-5xl font-bold mb-10
+  }
+
+  .body-copy {
+    @apply font-medium text-xl leading-normal;
+  }
+
+  .boxed {
+    @apply font-wide uppercase tracking-[4px] border-2 border-mardiGras py-3 px-7 text-xl inline-block mx-auto;
+  }
+
+  .page-grid {
+    @apply grid grid-cols-12 gap-x-5;
+  }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .sectionPadding {
+    @apply pt-sectionTop pb-sectionBottom;
+  }
+
+  hr.vertical {
+    @apply h-32 w-[2px] bg-black z-hr;
+  }
+}

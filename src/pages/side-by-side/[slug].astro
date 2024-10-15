@@ -1,0 +1,32 @@
+---
+import { getEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Newsletter from "../../components/Newsletter.astro";
+import PopupToolbar from "@components/PopupToolbar.svelte";
+
+// 1. Get the slug from the incoming server request
+const { slug } = Astro.params;
+
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry("comparison", slug);
+
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
+// 4. (Optional) Render the entry to HTML in the template
+const { Content } = await entry.render();
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <Header />
+  <div class="pl-page pt-[60px] content page-grid">
+    <Content />
+    <PopupToolbar client:only />
+  </div>
+  <Newsletter />
+</BaseLayout>

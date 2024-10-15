@@ -1,0 +1,27 @@
+---
+import FrameworkLogoGrid from "./FrameworkLogoGrid.astro";
+import Icon from "./Icon.astro";
+---
+
+<section class="bg-icterine relative z-bg sectionPadding page-grid flex-col">
+  <div class="col-start-3 col-span-8 flex flex-col items-center">
+    <h2 class="boxed mb-12">Where do I start?</h2>
+
+    <p class="text-3xl font-bold leading-loose mb-18">
+      You can choose your own adventure by starting with a specific framework:
+    </p>
+
+    <!-- logo grid -->
+    <FrameworkLogoGrid />
+
+    <a
+      href="/side-by-side"
+      class="flex items-center gap-x-2 text-xl font-bold bg-white py-4 px-10 hover:bg-mardiGras hover:text-white"
+    >
+      See How Features for each Framework Compare
+      <Icon id="arrow" />
+    </a>
+  </div>
+
+  <hr class="vertical absolute -bottom-[60px] left-1/2 -translate-1/2" />
+</section>

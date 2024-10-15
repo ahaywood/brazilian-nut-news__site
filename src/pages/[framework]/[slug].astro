@@ -1,0 +1,31 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+
+const { framework, slug } = Astro.params;
+console.log({ framework, slug });
+
+// get all the course content for a specific framework,
+// to be displayed within the sidebar
+const courseContent = await getCollection("course", ({ id }) => {
+  return id.startsWith(`${framework}/`);
+});
+
+console.log({ courseContent });
+
+// get all the details for a specific lesson
+const lesson = await getEntry("course", `${framework}/${slug}`);
+
+// if the lesson doesn't exist then send the user to the 404 page
+if (lesson === undefined) {
+  return Astro.redirect("/404");
+}
+const { Content } = await lesson.render();
+---
+
+<BaseLayout>
+  <Header framework={framework} />
+  <Content />
+  <slot />
+</BaseLayout>

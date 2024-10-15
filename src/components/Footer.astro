@@ -1,0 +1,27 @@
+---
+import SocialMedia from "./SocialMedia.astro";
+const getCurrentYear = () => new Date().getFullYear();
+import { constants } from "../helpers/constants";
+---
+
+<footer class="bg-cinder pt-[130px] pb-[140px]">
+  <!-- social media -->
+  <SocialMedia />
+
+  <p>
+    <ul class="legal">
+      <li><a href="/terms">Terms and Conditions</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/disclaimers">Disclaimers</a></li>
+      <li><a href="/open-source">Open Source License</a></li>
+    </ul>
+  </p>
+  <p>
+    Copyright &copy; {getCurrentYear()}. <a
+      href={constants.AHHA}
+      class="underline hover:text-fountainBlue"
+      target="_blank"
+      rel="noreferrer">Ah Ha Creative, LLC.</a
+    > All Rights Reserved.
+  </p>
+</footer>

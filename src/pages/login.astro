@@ -1,0 +1,78 @@
+---
+import Image from "astro/components/Image.astro";
+import GitHubCorner from "../components/GitHubCorner.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import headerStars2x from "../images/bg__header-login-stars@2x.png";
+import headerStar2x from "../images/bg__login-star@2x.png";
+import { constants } from "../helpers/constants";
+---
+
+<BaseLayout>
+  <header class="bg-graphPaper pt-10 relative">
+    <a
+      href={constants.GITHUB_PROJECT}
+      target="_blank"
+      rel="noreferrer"
+      class="absolute top-0 right-0 text-black hover:text-mamba"
+      ><GitHubCorner width="108" /></a
+    >
+    <h1
+      class="uppercase font-condensed text-mardiGras text-[294px] text-center leading-none"
+    >
+      Login
+    </h1>
+    <Image
+      class="absolute right-6 bottom-10"
+      src={headerStars2x}
+      width="192"
+      height="202"
+      alt=""
+    />
+  </header>
+  <main class="bg-icterine page-grid">
+    <form
+      action="/api/auth/signin"
+      method="post"
+      class="col-start-4 col-span-6 sectionPadding relative"
+    >
+      <Image
+        src={headerStar2x}
+        width="93"
+        height="114"
+        alt=""
+        class="absolute -left-20 -top-10"
+      />
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required />
+      </div>
+      <div class="field">
+        <div class="flex justify-between items-baseline">
+          <label for="password">Password</label>
+          <a
+            href="/forgot"
+            class="text-mamba font-bold text-2xl border-b-3 border-mamba hover:text-mardiGras hover:border-mardiGras"
+            >Forgot?</a
+          >
+        </div>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div class="relative">
+        <button class="mb-10 primary">Submit</button>
+        <div
+          class="absolute font-handwriting text-center text-2xl leading-none -right-[210px] top-8 bg-[url(../images/arrow__login.svg)] bg-no-repeat pl-[70px] pt-[70px]"
+        >
+          <div class="-rotate-[9deg] relative">Access Your<br />Account</div>
+        </div>
+      </div>
+      <div class="text-center">
+        <a
+          href="/signup"
+          class="text-center text-mamba text-2xl border-b-[3px] border-mamba font-bold tracking-tight hover:text-black hover:border-black"
+          >Need an Account?</a
+        >
+      </div>
+    </form>
+  </main>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+import Image from "astro/components/Image.astro";
+import GitHubCorner from "../components/GitHubCorner.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import formStar from "../images/forgot__form-star.png";
+import headerStar2x from "../images/bg__login-star@2x.png";
+import submitStar from "../images/forgot__arrow-submit.png";
+import { constants } from "../helpers/constants";
+---
+
+<BaseLayout>
+  <header class="bg-graphPaper pt-10 relative">
+    <a
+      href={constants.GITHUB_PROJECT}
+      target="_blank"
+      rel="noreferrer"
+      class="absolute top-0 right-0 text-black hover:text-mamba"
+      ><GitHubCorner width="108" /></a
+    >
+    <h1
+      class="uppercase font-condensed text-mardiGras text-[294px] text-center leading-[0.8] relative"
+    >
+      <span class="relative">
+        <Image
+          src={headerStar2x}
+          width="93"
+          height="114"
+          alt=""
+          class="absolute -left-[100px] top-[150px]"
+        />
+        Forgot
+      </span>
+      <div class="inline outline-text">Password</div>
+    </h1>
+  </header>
+  <main class="bg-icterine page-grid relative">
+    <Image
+      src={formStar}
+      alt=""
+      class="absolute right-[20px] -top-[45px]"
+      width="120"
+      height="108"
+    />
+    <form
+      action="/api/auth/signin"
+      method="post"
+      class="col-start-4 col-span-6 sectionPadding relative"
+    >
+      <div class="field relative">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required />
+        <div
+          class="absolute font-handwriting text-center text-2xl leading-none -left-[210px] top-[80px] bg-[url(../images/forgot__curly-arrow.svg)] bg-no-repeat w-[200px] pt-[140px] bg-right-top"
+        >
+          <div class="-rotate-[4deg] relative">
+            We'll Email you<br />the Details you<br />Need
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <button class="mb-10 primary">Send me a Reset Link</button>
+        <Image
+          src={submitStar}
+          alt=""
+          width="126"
+          height="100"
+          class="absolute -right-[100px] top-[90px]"
+        />
+      </div>
+      <div class="text-center">
+        <a
+          href="/login"
+          class="text-center text-mamba text-2xl border-b-[3px] border-mamba font-bold tracking-tight hover:text-black hover:border-black"
+          >Ready to Login?</a
+        >
+      </div>
+    </form>
+  </main>
+</BaseLayout>

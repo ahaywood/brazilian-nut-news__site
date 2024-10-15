@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { framework: "remix" } },
+    { params: { framework: "nextjs-app" } },
+    { params: { framework: "nextjs-pages" } },
+    { params: { framework: "astro" } },
+    { params: { framework: "redwoodjs" } },
+    { params: { framework: "svelte" } },
+  ];
+}
+---
+
+<BaseLayout>
+  <div class="bg-red-500">THIS</div>
+  <slot />
+</BaseLayout>

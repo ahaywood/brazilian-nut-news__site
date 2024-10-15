@@ -1,0 +1,32 @@
+---
+import Icon from "./Icon.astro";
+import { constants } from "../helpers/constants";
+const { github, youtube, linkedin, twitter, tiktok } = Astro.props;
+---
+
+<ul class="social-media">
+  <!-- GITHUB -->
+  <li>
+    <a href={constants.GITHUB}><Icon id="github" size={44} /></a>
+  </li>
+
+  <!-- YOUTUBE -->
+  <li>
+    <a href={constants.YOUTUBE}><Icon id="youtube" size={44} /></a>
+  </li>
+
+  <!-- LINKEDIN -->
+  <li>
+    <a href={constants.LINKEDIN}><Icon id="linkedin" size={44} /></a>
+  </li>
+
+  <!-- TWITTER -->
+  <li>
+    <a href={constants.TWITTER}><Icon id="twitter" size={44} /></a>
+  </li>
+
+  <!-- TIKTOK -->
+  <li>
+    <a href={constants.TIKTOK}><Icon id="tiktok" size={44} /></a>
+  </li>
+</ul>

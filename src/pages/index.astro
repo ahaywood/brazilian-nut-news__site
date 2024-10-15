@@ -1,0 +1,375 @@
+---
+import Image from "astro/components/Image.astro";
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GitHubCorner from "../components/GitHubCorner.astro";
+import AboutTheProject from "../components/AboutTheProject.astro";
+import Question from "../components/Question.svelte";
+import Newsletter from "../components/Newsletter.astro";
+import Start from "../components/Start.astro";
+import { constants } from "../helpers/constants";
+import SocialMedia from "../components/SocialMedia.astro";
+
+// images
+import graphQLPlayground from "../images/screenshot__graphql-playground.png";
+import openQutoes from "../images/open-quotes.svg";
+import screenshotSupabaseStructure from "../images/screenshot__table-structure.png";
+import headerBar from "../images/home__header-bar.png";
+import supabaseScreenshot from "../images/home__screenshot__supabase.png";
+
+// get frequently asked questions
+const faqCollection = await getCollection("faqs");
+
+// sort faqs by order
+const allFaqs = faqCollection.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout>
+  <header
+    class="flex flex-col justify-center items-center pt-8 pb-24 w-full bg-graphPaper relative"
+  >
+    <!-- GITHUB CORNER -->
+    <a
+      href={constants.GITHUB_PROJECT}
+      target="_blank"
+      rel="noreferrer"
+      class="absolute top-0 right-0 text-black hover:text-mamba"
+      ><GitHubCorner width="108" /></a
+    >
+
+    <img
+      src="/images/logo__hacker-news.svg"
+      alt="A Hacker News Clone"
+      class="mx-auto mb-10"
+      width="314"
+    />
+
+    <img
+      src="/images/logo.svg"
+      alt="Brazilian Nut News: Where the Best News Rises to the Top"
+    />
+
+    <hr class="vertical absolute -bottom-[60px] left-1/2 -translate-x-1/2" />
+  </header>
+
+  <!-- About the Project -->
+  <AboutTheProject />
+
+  <!-- Project Requirements -->
+  <section class="page-grid relative sectionPadding">
+    <div class="col-span-12 text-center mb-10">
+      <h2 class="boxed">Project Requirements</h2>
+    </div>
+    <div class="pl-6 col-span-6 col-start-2">
+      <iframe
+        width="100%"
+        height="482"
+        src="https://www.youtube.com/embed/F_AplRX3dJU?si=HuCLSDV3uifsGi_f"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+    <div class="col-span-3 col-start-9 self-center">
+      <p class="large-body">
+        One of the main things that separates a junior developer from a senior
+        developer is their opinions.
+      </p>
+
+      <a
+        href={constants.FIGMA}
+        class="outline"
+        target="_blank"
+        rel="noreferrer"
+      >
+        View Project on
+        <img src="/images/icon__figma.svg" alt="Figma" />
+        Figma
+      </a>
+    </div>
+  </section>
+
+  <section class="page-grid pb-sectionBottom">
+    <div class="col-start-4 col-span-8 relative">
+      <img src="/images/screenshot__feed.png" alt="Brazilian Nut News" />
+      <div
+        class="font-handwriting w-[225px] rotate-[-4deg] absolute text-3xl -left-[300px] top-[185px]"
+      >
+        You have to be logged in to upvote a link
+      </div>
+      <div class="font-handwriting w-[288px] -rotate-[5deg] text-3xl">
+        Once someone’s link has been upvoted 50 times, they have enough “Karma”
+        points to down vote
+      </div>
+    </div>
+  </section>
+
+  <!-- Tailwind -->
+  <section class="page-grid relative pb-sectionBottom">
+    <div class="col-start-2 col-span-6 row-start-1">
+      <Image
+        src="/images/logo__tailwind.svg"
+        alt="Tailwind CSS"
+        class="mb-6"
+        width="372"
+        height="47"
+      />
+      <h3 class="text-4xl font-bold mb-3">
+        All styling is done with Tailwind CSS.
+      </h3>
+      <p class="body-copy">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non.
+      </p>
+    </div>
+    <div
+      class="font-handwriting text-2xl leading-tight col-start-7 col-span-6 row-start-1 text-right
+      bg-[url('/images/home__arrow-tailwindcss.svg')] bg-no-repeat bg-right-bottom"
+    >
+      <div
+        class="pb-[110px] w-[447px] text-center rotate-[3deg] relative mr-14 ml-auto"
+      >
+        When the user scrolls down the navigation bar appears on screen and
+        sticks to the top
+      </div>
+      <div
+        class="pb-[30px] text-center w-[400px] relative rotate-[3deg] ml-auto mr-[130px]"
+      >
+        There are 2 different versions of the navigation bar
+      </div>
+      <div class="pb-[30px] relative rotate-[2deg] mr-[145px]">
+        One for when the user is NOT logged
+      </div>
+      <div class="relative -rotate-[1deg] pr-[270px]">
+        One for when the user IS logged
+      </div>
+    </div>
+    <div class="col-span-12">
+      <Image src={headerBar} alt="App Home Header Bar" />
+    </div>
+    <hr class="vertical absolute left-1/2 -translate-x-1/2 -bottom-[60px]" />
+  </section>
+
+  <!-- Other Tools and Tech -->
+  <section class="page-grid sectionPadding">
+    <div class="col-span-12 text-center mb-20 relative">
+      <h2 class="boxed">Other Tools &amp; Tech</h2>
+    </div>
+
+    <!-- storybook -->
+    <div class="col-span-7 pb-sectionBottom">
+      <iframe
+        width="100%"
+        height="482"
+        src="https://www.youtube.com/embed/F_AplRX3dJU?si=HuCLSDV3uifsGi_f"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+    <div class="col-span-3 col-start-9 pb-sectionBottom">
+      <img src="/images/logo__storybook.svg" alt="Storybook" class="mb-10" />
+      <p class="large-body !mb-16">
+        One of the main things that separates a junior developer.
+      </p>
+      <a
+        href={constants.PUBLISHED_STORYBOOK}
+        class="outline"
+        target="_blank"
+        rel="noreferrer"
+        >View Published
+        <img src="/images/icon__storybook.svg" alt="Storybook" />
+        Storybook</a
+      >
+    </div>
+
+    <!-- jest -->
+
+    <!-- typescript -->
+
+    <!-- video -->
+    <div class="col-start-3 col-span-8 pb-sectionBottom">
+      <iframe
+        width="100%"
+        height="482"
+        src="https://www.youtube.com/embed/F_AplRX3dJU?si=HuCLSDV3uifsGi_f"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+
+    <!-- supabase -->
+    <div class="col-start-2 col-span-3 self-center">
+      <Image
+        src="/images/logo__supabase.svg"
+        alt="Supabase"
+        class="mb-10"
+        width="287"
+        height="59"
+      />
+      <p class="font-bold text-3xl leading-snug mb-10">
+        One of the main things that separates a junior developer from a senior
+        developer is their opinions.
+      </p>
+      <p class="text-xl leading-[1.8] mb-10">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non. Adipisicing veniam
+        ut deserunt sint excepteur eu irure ullamco qui
+      </p>
+      <p class="text-xl leading-[1.8]">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non. Adipisicing veniam
+        ut deserunt sint excepteur eu irure ullamco qui
+      </p>
+    </div>
+    <div class="col-span-7 col-start-6">
+      <Image src={supabaseScreenshot} alt="Screenshot of Supabase" />
+    </div>
+  </section>
+
+  <Image
+    src={screenshotSupabaseStructure}
+    alt="Supabase Database Visualization"
+    class="max-w-full relative mx-auto mb-14"
+  />
+
+  <section class="page-grid">
+    <div class="col-start-3 col-span-8">
+      <p class="text-xl leading-[1.8] mb-10">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non. Adipisicing veniam
+        ut deserunt sint excepteur eu irure ullamco qui
+      </p>
+      <p class="text-xl leading-[1.8] mb-10">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non. Adipisicing veniam
+        ut deserunt sint excepteur eu irure ullamco qui
+      </p>
+      <div class="flex justify-center items-center gap-32 mb-12">
+        <Image
+          src="/images/logo__prisma.svg"
+          alt="Prisma"
+          width="198"
+          height="78"
+        />
+        <Image
+          src="/images/logo__graphql.svg"
+          width="283"
+          height="78"
+          alt="GraphQL"
+        />
+        <Image
+          src="/images/logo__apollo.svg"
+          width="225"
+          height="67"
+          alt="Apollo"
+        />
+      </div>
+    </div>
+
+    <div class="col-span-12">
+      <Image
+        src={graphQLPlayground}
+        alt="GraphQL Playground"
+        class="max-w-full relative mx-auto"
+      />
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="page-grid sectionPadding relative">
+    <div class="col-start-3 col-span-2 text-center">
+      <Image src={openQutoes} alt="Open Quotes" class="mx-auto relative" />
+    </div>
+    <div class="col-span-6">
+      <h3 class="font-bold text-3xl leading-snug mb-5">
+        One of the main things that separates a junior developer from a senior
+        developer is their opinions.
+      </h3>
+      <p class="text-xl leading-[1.8]">
+        Irure eu laboris irure nisi aute voluptate aliquip duis deserunt ullamco
+        labore do. Ex laborum eu nulla elit velit cupidatat duis occaecat do.
+        Veniam incididunt do incididunt laborum fugiat non. Adipisicing veniam
+        ut deserunt sint excepteur eu irure ullamco qui voluptate ex fugiat
+        cupidatat minim minim. Cupidatat fugiat incididunt proident fugiat
+        labore ut exercitation nisi laborum ad exercitation cillum enim officia
+        et. Culpa exercitation ut qui.
+      </p>
+    </div>
+    <hr class="vertical absolute -bottom-[60px] left-1/2 -translate-x-1/2" />
+  </section>
+
+  <section class="page-grid sectionPadding relative">
+    <div class="col-start-3 col-span-8">
+      <div class="flex justify-center">
+        <h2 class="boxed mb-18 relative">
+          Frequently Asked Questions
+          <img
+            src="/images/question.svg"
+            alt=""
+            class="absolute -right-[110px] rotate-[14deg] -top-4"
+          />
+          <img
+            src="/images/question.svg"
+            alt=""
+            class="absolute -left-[100px] -rotate-[14deg] -top-10"
+          />
+        </h2>
+      </div>
+      {
+        allFaqs.map((faq) => (
+          <Question question={faq.data.question} client:only>
+            <p class="text-xl'">{faq.body}</p>
+          </Question>
+        ))
+      }
+    </div>
+
+    <hr class="vertical absolute -bottom-[60px] left-1/2 -translate-1/2" />
+  </section>
+
+  <!-- ABOUT ME -->
+  <section class="sectionPadding about-me">
+    <div class="flex justify-center mb-11">
+      <h2 class="boxed">About Me</h2>
+    </div>
+    <div class="page-grid">
+      <div class="col-start-3 col-span-5">
+        <h3 class="font-bold text-3xl mb-8">
+          One of the main things that separates a junior developer from a senior
+          developer is their opinions.
+        </h3>
+        <p class="text-lg leading-loose mb-11">
+          Irure eu laboris irure nisi aute voluptate aliquip duis deserunt
+          ullamco labore do. Ex laborum eu nulla elit velit cupidatat duis
+          occaecat do. Veniam incididunt do incididunt laborum fugiat non.
+          Adipisicing veniam ut deserunt sint excepteur eu irure
+        </p>
+        <SocialMedia />
+      </div>
+      <div class="col-span-4 flex justify-center">
+        <img
+          src="https://picsum.photos/seed/1712053754610/375/375"
+          alt=""
+          class="rounded-full relative -top-10"
+        />
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+
+  <div class="relative">
+    <hr class="vertical absolute -top-[60px] left-1/2 -translate-1/2" />
+    <Start />
+  </div>
+</BaseLayout>
