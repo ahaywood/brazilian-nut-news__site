@@ -9,7 +9,7 @@ const blogCollection = defineCollection({
     publishDate: z.date(),
     slug: z.string(),
     metaDescription: z.string(),
-    ogImage: z.string(),
+    ogImage: z.string().optional(),
   })
 });
 
