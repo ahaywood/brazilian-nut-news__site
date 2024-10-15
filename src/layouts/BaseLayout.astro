@@ -13,8 +13,11 @@ import Footer from "../components/Footer.astro";
     <title>Brazilian Nut News</title>
 
     <!-- FATHOM ANALYTICS -->
-    <script src="https://cdn.usefathom.com/script.js" data-site="ZEHCWJON" defer
-    ></script>
+    <script
+      src="https://cdn.usefathom.com/script.js"
+      is:inline
+      data-site="ZEHCWJON"
+      defer></script>
   </head>
   <body>
     <Nav client:only />
@@ -22,6 +25,7 @@ import Footer from "../components/Footer.astro";
     <Footer />
 
     <!-- KWES FORMS -->
-    <script src="https://kwesforms.com/v2/kf-script.js" defer></script>
+    <script src="https://kwesforms.com/v2/kf-script.js" is:inline defer
+    ></script>
   </body>
 </html>

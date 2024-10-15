@@ -8,6 +8,9 @@ import PopupToolbar from "@components/PopupToolbar.svelte";
 
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
 
 // 2. Query for the entry directly using the request slug
 const entry = await getEntry("comparison", slug);
@@ -20,6 +23,7 @@ if (entry === undefined) {
 const { Content } = await entry.render();
 
 const { frontmatter } = Astro.props;
+console.log({ frontmatter });
 ---
 
 <BaseLayout>
